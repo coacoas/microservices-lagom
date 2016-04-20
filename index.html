@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>What's in a Name?</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/presentation.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>WHAT'S IN A NAME?</h2>
+					<h3>Microservices and Lagom</h3>
+				</section>
+                <section>
+                    <section>
+                        <h1>Why Microservices?</h1>
+                        <aside class="notes">
+                            <p>Started monolith. Easy to work with. Easy to deploy. Transactions are simple.</p>
+                            <p>Move to n-tier architecture. Allow spreading out front-end and back-end. But that database...</p>
+                            <p>Big boxes. Every part of every app ended up using the one database server. It was too big otherwise.</p>
+                            <p>Applications became increasingly distributed. Release to "cloud". AWS. Requires
+                            a different mindset.</p>
+                        </aside>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>What is a Microservice?</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>Reactive Microservice, specifically</li>
+                                <li>As defined by Jonas Boner</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Isolated</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Isolation of failure (bulkheading)</li>
+                                <li>Resilience/Recovery from Failure</li>
+                                <li>Easier than ever with virtualization/containerization</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Asynchronous</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Microservices must be absolutely decoupled</li>
+                                <li>Synchronous calls == Tight coupling</li>
+                                <li>Asynchronous allows for failure</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Autonomous</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Each service acts on its own</li>
+                                <li>Seperate processes, CI/CD</li>
+                                <li>Even different teams and different languages</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Single Responsibility</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Describe what it does in one sentence</li>
+                                <li>"Manages friend relationships between users"</li>
+                                <li><b>NOT</b> "Manages orders and processes payments" - split that into another service</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Exclusive State</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Owns its own data</li>
+                                <li>All access goes through the API</li>
+                                <li>Use the appropriate data store for the service (Cassandra/ElasticSearch/PostGreSQL)</li>
+                                <li>Stateless, of course, is also encouraged!</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Mobility</h2>
+                        <aside class="notes">
+                            <p>Must have an always-available address</p>
+                            <p>Where that address points can move. <i>Location Transparency</i></p>
+                            <p>Come in systems. One microservice is no microservices</p>
+                        </aside>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Wait a minute... </h2>
+                        <aside class="notes">
+                            <p> There wasn't anything about size in there.  How many lines of code? </p>
+                            <p><i>shudder</i> It's not about the size</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <blockquote>
+                            There are only two hard problems in computer science: cache invalidation and naming things
+
+                            <footer><cite>- Phil Karlton</cite></footer>
+                        </blockquote>
+                        <aside class="notes">
+                            There are reasons for this, of course! We work with extremely abstract concepts that don't
+                            lend themselves to names very well
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Monad</h3>
+                    </section>
+                    <section>
+                        <h3>AbstractSingletonProxyFactoryBean</h3>
+                    </section>
+                    <section>
+                        <h3>Object-Oriented Programming</h3>
+                    </section>
+                    <section>
+                        <h3>How big should a microservice be?</h3>
+                        <p class="fragment">As small as possible & as big as necessary</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1><a href="http://lightbend.com/lagom">Lagom</a></h1>
+                    </section>
+                    <section>
+                        <dl>
+                            <dt>Lagom</dt>
+                            <dd><i>1. Swedish: enough, sufficient, just right. <br>
+                                2. A new opinionated microservices framework from Lightbend</i></dd>
+                        </dl>
+                        <aside class="notes">
+                            Between Akka and Lagom, the Swedes are taking over naming.
+                            Next product: Lightbend BorkBorkBork!
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Disclaimer</h2>
+                        <p>Lagom is an early release (M1) product. There <i>will</i> be updates and changes
+                        between now and final 1.0.0 release. Do not use in production. Do not taunt Lagom.
+                        Documentation for Lagom is still a work in progress.</p>
+                    </section>
+                </section>
+                <section>
+                    <h1>Demo</h1>
+                    <aside class="notes">
+                        <code>
+                            activator new lagom-demo lagom-java
+                        </code>
+                    </aside>
+                </section>
+                <section>
+                    <section><h2>So, how did we do? </h2></section>
+                    <section>
+                        <h2>Isolated?</h2>
+                        <ul>
+                            <li>Services are broken out in individual projects.  </li>
+                            <li>Seperate projects for API and implementation</li>
+                            <li>Short-circuiting implemented by default</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Asynchronous</h2>
+                        <ul>
+                            <li>All service APIs are implemented as ServiceCall&lt;Id, Request, Response&gt;</li>
+                            <li>invoke() method responds with CompletionStage&lt;Response&gt;</li>
+                            <li>Making it block requires additional effort!</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Autonomous</h2>
+                        <ul>
+                            <li>Independent sbt builds</li>
+                            <li>Allows for integration with external Lagom projects:
+                                <pre><code lang="scala">
+lazy val helloworld = lagomExternalProject("helloworld",
+  "sample.helloworld" %% "helloworld-impl" % "1.0")
+                                </code></pre>
+                            </li>
+                            <li>Does not require Lagom for external services</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Single Responsibility</h2>
+                        <ul>
+                            <li>OK, this one is really on the developers</li>
+                        </ul>
+                        <aside class="notes">
+                            Still, the ease of creating new services lends itself to keep the individual projects small
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Exclusive State</h2>
+                        <ul>
+                            <li>Provides Cassandra integration out of the box.</li>
+                            <li>ES/CQRS integration requires interfacing through the API</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Mobility</h2>
+                        <ul>
+                            <li>Utilizes Akka actors/clustering</li>
+                            <li>Current supported deployment environment is ConductR</li>
+                            <li>I expect the community will quickly implement other deployments</li>
+                        </ul>
+                    </section>
+
+                </section>
+                <section>
+                    <h3>For more information:</h3>
+                    <ul>
+                        <li><a href="http://www.oreilly.com/programming/free/reactive-microservices-architecture.html">Reactive Microservices Architecture</a> (free book from O'Reilly)</li>
+                        <li><a href="https://www.lightbend.com/resources/videos#filter:lagom">Lagom Videos</a></li>
+                        <li><a href="https://www.youtube.com/user/typesafehub/search?query=lagom">YouTube Videos</a></li>
+                        <li><a href="https://lightbend.com/lagom">Product page</a></li>
+                        <li><a href="https://gitter.im/lagom/lagom">Gitter Channel</a></li>
+                        <li><a href="https://github.com/lagom/lagom">GitHub Repository</a></li>
+                        <li><a href="https://groups.google.com/forum/#!forum/lagom-framework">Google Group</a></li>
+                        <li><a href="https://twitter.com/lagom">Twitter (@lagom)</a></li>
+                    </ul>
+                </section>
+            </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

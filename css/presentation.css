@@ -1,0 +1,23 @@
+.strike {
+    text-decoration: line-through;
+}
+
+.reveal .slides section .fragment.bold {
+    opacity: 1;
+    visibility: visible;
+}
+.reveal .slides section .fragment.bold.visible {
+    font-weight: bold;
+}
+
+.reveal .slides section .left {
+    float: left;
+}
+
+.reveal .slides section .right {
+    float: right;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    text-transform: none;
+}
